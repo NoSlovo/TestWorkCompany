@@ -6,17 +6,15 @@ public class User : MonoBehaviour
    private DataUser _dataUser;
    private SaveAndLoadData _saveAndLoadData;
 
-   private void Start()
-   {
-      _saveAndLoadData = new SaveAndLoadData();
-      _dataUser = _saveAndLoadData.LoadUser();
-   }
-
-   public void SetUserName(string UserName)
+   private void Awake() => _saveAndLoadData = new SaveAndLoadData();  
+   
+   private void Start()=> _dataUser = _saveAndLoadData.LoadUser();
+   
+   public void GetUserName(string UserName)
    {
       if (UserName.Length > 1)
       {
-         _dataUser.Name = UserName;
+         _dataUser.SetNameUser(UserName);
          _saveAndLoadData.SaveUser(_dataUser);
       }
    }

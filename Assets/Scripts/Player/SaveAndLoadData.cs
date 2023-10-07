@@ -6,7 +6,7 @@ public class SaveAndLoadData
     public void SaveUser(DataUser dataUser)
     {
         var userData = new DataUser();
-        userData.Name = dataUser.Name;
+        userData.SetNameUser(dataUser.Name);
 
         string json = JsonUtility.ToJson(userData,true);
         File.WriteAllText(Application.dataPath + "/UserDataFile.json",json);
@@ -20,9 +20,7 @@ public class SaveAndLoadData
             DataUser dataUser = JsonUtility.FromJson<DataUser>(json);
             return dataUser;   
         }
-        else
-        {
-            return new DataUser();
-        }
+        
+        return new DataUser();
     }
 }

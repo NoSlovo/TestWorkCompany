@@ -1,8 +1,14 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.Events;
-
-public struct DataUser
+﻿public struct DataUser
 {
-    public string Name;
+    public string Name
+    {
+        get => Name;
+        private set => Name = value;
+    }
+    
+    public void SetNameUser(string UserName)
+    {
+        if (UserName != null)
+            Name = UserName;
+    }
 }
