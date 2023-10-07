@@ -26,7 +26,7 @@ public class LogineScreen : MonoBehaviour
         _buttonLogine.gameObject.SetActive(false);
     }
 
-    private void SetTextValue() => user.GetUserName(_userText.text);
+    private void SetTextValue() => user.SetName(_userText.text);
     
     private void OnDisable() => _buttonLogine.onClick.AddListener(SetTextValue);
 }

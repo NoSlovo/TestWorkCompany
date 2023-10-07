@@ -1,11 +1,11 @@
 ﻿public struct DataUser
 {
-    public string Name
+    public readonly string Name
     {
         get => Name;
         private set => Name = value;
     }
-    
+
     public void SetNameUser(string UserName)
     {
         if (UserName != null)

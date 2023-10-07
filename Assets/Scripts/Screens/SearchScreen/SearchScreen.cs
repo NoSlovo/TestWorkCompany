@@ -1,33 +1,32 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SearchScreen : MonoBehaviour
 {
     [SerializeField] private EnemySearch _searchEnemy;
-    [SerializeField] private GameObject _screenResult;
-
-    private void OnEnable() => StartSearchEnemy();
+    [SerializeField] private ScreenResult _screenResult;
+    [SerializeField] private Button _buttonSearch;
     
-
-    private void FixedUpdate()
+    private void OnEnable()
     {
-        if (_searchEnemy.ResultEnemy != null)
-        {
-            _searchEnemy.gameObject.SetActive(false);
-            _screenResult.gameObject.SetActive(true);
-        }
-        else
-        {
-            _searchEnemy.gameObject.SetActive(true);
-            _screenResult.gameObject.SetActive(false);
-        }
+        _buttonSearch.onClick.AddListener(StartSearch);
+        _searchEnemy.EnemyFound += _screenResult.SetEnemyUser;
     }
 
-    public void StartSearchEnemy()
+    private void Start()
     {
+        StartSearch();
+    }
+
+    private void StartSearch()
+    {
+        _screenResult.gameObject.SetActive(false);
         _searchEnemy.GetEnemy();
-        
-    } 
-        
-    
+    }
+
+    private void OnDisable()
+    {
+        _searchEnemy.EnemyFound -= _screenResult.SetEnemyUser;
+    }
 }

@@ -271,6 +271,7 @@ GameObject:
   - component: {fileID: 61172061}
   - component: {fileID: 61172063}
   - component: {fileID: 61172062}
+  - component: {fileID: 61172064}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -336,6 +337,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 61172060}
   m_CullTransparentMesh: 1
+--- !u!114 &61172064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61172060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68424e076b6de754aa7da5817922b193, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &97022079
 GameObject:
   m_ObjectHideFlags: 0
@@ -1554,7 +1567,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _searchEnemy: {fileID: 332944213}
-  _screenResult: {fileID: 1389606632}
+  _screenResult: {fileID: 1389606634}
+  _buttonSearch: {fileID: 1673091799}
 --- !u!1 &887994461
 GameObject:
   m_ObjectHideFlags: 0
@@ -2164,6 +2178,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1389606633}
+  - component: {fileID: 1389606634}
   m_Layer: 5
   m_Name: SearchResult
   m_TagString: Untagged
@@ -2196,6 +2211,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1389606634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389606632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947423a4800e4ac4e9dbc80a5613766f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _user: {fileID: 2020380131}
+  _userName: {fileID: 1454612697}
+  _coins: {fileID: 19776099}
+  _enemyName: {fileID: 178534527}
+  _image: {fileID: 61172064}
 --- !u!1 &1454612695
 GameObject:
   m_ObjectHideFlags: 0
