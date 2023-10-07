@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ScreenResult : MonoBehaviour
 {
+    [SerializeField] private CharacterEnemy _enemy;
+    
     [Header("Игрок")]
     [SerializeField] private User _user;
     [SerializeField] private TextMeshProUGUI _userName;
@@ -28,6 +30,7 @@ public class ScreenResult : MonoBehaviour
          _userName.text = _user.Name;
          _coins.text = $"{_user.Coin}";
          _enemyName.text = _enemyUser.Name;
+         _enemy.SetEnemyUser(_enemyUser);
          gameObject.SetActive(true);
          StartCoroutine(GetImage(EnemyUser));
      }

@@ -1,6 +1,6 @@
+using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class LogineScreen : MonoBehaviour
@@ -9,6 +9,8 @@ public class LogineScreen : MonoBehaviour
     [SerializeField] private Button _buttonLogine;
     [SerializeField] private User user;
 
+    public event Action UserLogine;
+    
     private const int _standardValue = 1;
 
     private void OnEnable() => _buttonLogine.onClick.AddListener(SetTextValue);
@@ -26,7 +28,12 @@ public class LogineScreen : MonoBehaviour
         _buttonLogine.gameObject.SetActive(false);
     }
 
-    private void SetTextValue() => user.SetName(_userText.text);
+    private void SetTextValue()
+    {
+        user.SetName(_userText.text);
+        UserLogine?.Invoke();
+    } 
+        
     
     private void OnDisable() => _buttonLogine.onClick.AddListener(SetTextValue);
 }
