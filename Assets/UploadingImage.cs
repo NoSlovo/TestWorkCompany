@@ -12,7 +12,7 @@ public class UploadingImage : MonoBehaviour
 
     public void SetImage(Texture2D texture)
     {
-        _enemyImage.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.zero);
+        _enemyImage.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(.5f, .5f));
     }
     
 }

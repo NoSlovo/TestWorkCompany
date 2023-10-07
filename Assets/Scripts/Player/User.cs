@@ -3,24 +3,25 @@ using UnityEngine;
 
 public class User : MonoBehaviour
 {
-   private DataUser _dataUser;
+   private DataUser _data;
    private SaveAndLoadData _saveAndLoadData;
 
-   private int _coin = 0;
-   
-   public String Name => _dataUser.Name;
-   public int Coin => _coin;
+   public String Name => _data.Name;
+   public int Coin => _data.Coin;
 
-   private void Awake() => _saveAndLoadData = new SaveAndLoadData();  
-   
-   private void Start()=> _dataUser = _saveAndLoadData.LoadUser();
-   
+   private void Awake()
+   {
+      _saveAndLoadData = new SaveAndLoadData();
+      _data = _saveAndLoadData.LoadUser();
+   }
+
    public void SetName(string UserName)
    {
       if (UserName.Length > 1)
       {
-         _dataUser.SetNameUser(UserName);
-         _saveAndLoadData.SaveUser(_dataUser);
+         _data.Name = UserName;
+         _data.Coin = 0;
+         _saveAndLoadData.SaveUser(_data);
       }
    }
 }

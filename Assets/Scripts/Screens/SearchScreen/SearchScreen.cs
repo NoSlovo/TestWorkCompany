@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,23 +12,30 @@ public class SearchScreen : MonoBehaviour
     
     private void OnEnable()
     {
-        _buttonSearch.onClick.AddListener(StartSearch);
-        _searchEnemy.EnemyFound += _screenResult.SetEnemyUser;
+        _buttonSearch.onClick.AddListener(StartEnemySearch);
     }
 
     private void Start()
     {
-        StartSearch();
+        StartEnemySearch();
     }
 
-    private void StartSearch()
+    private void StartEnemySearch() => StartCoroutine(Search());
+
+    private IEnumerator Search()
     {
+        var WaitForSecondsRealtime = new WaitForSecondsRealtime(1f);
+        _searchEnemy.gameObject.SetActive(true);
         _screenResult.gameObject.SetActive(false);
         _searchEnemy.GetEnemy();
+        yield return WaitForSecondsRealtime;
+        EnterScreenResult();
     }
 
-    private void OnDisable()
+    private void EnterScreenResult()
     {
-        _searchEnemy.EnemyFound -= _screenResult.SetEnemyUser;
+        _screenResult.SetEnemyUser(_searchEnemy.ResultEnemy);
+        _searchEnemy.gameObject.SetActive(false);
+        _screenResult.gameObject.SetActive(true);
     }
 }

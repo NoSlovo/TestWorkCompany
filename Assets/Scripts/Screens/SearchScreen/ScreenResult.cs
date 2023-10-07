@@ -1,5 +1,4 @@
 using System.Collections;
-using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
 using UnityEngine;
 
@@ -15,29 +14,33 @@ public class ScreenResult : MonoBehaviour
 
     [SerializeField] private UploadingImage _image;
 
-    public Image EnemyImage;
+    private EnemyUser _enemyUser;
+
+    public EnemyUser EnemyUser => _enemyUser;
 
     public void SetEnemyUser(EnemyUser EnemyUser)
      {
          if (EnemyUser == null)
             return;
          
+         _enemyUser = EnemyUser;
+         
          _userName.text = _user.Name;
          _coins.text = $"{_user.Coin}";
-         _enemyName.text = EnemyUser.Name;
-         
+         _enemyName.text = _enemyUser.Name;
          gameObject.SetActive(true);
-       // StartCoroutine(GetImage(EnemyUser));
+         StartCoroutine(GetImage(EnemyUser));
      }
 
-
-    // private IEnumerator GetImage(EnemyUser enemyUser)
-    // {
-    //     WWW image = new (enemyUser.Photo);
-    //     yield return image;
-    //     
-    //     Texture2D loadedTexture = new Texture2D(image.texture.width, image.texture.height);
-    //     image.LoadImageIntoTexture(loadedTexture);
-    //     _image.SetImage(loadedTexture);
-    // }
+    private IEnumerator GetImage(EnemyUser enemyUser)
+    {
+        using (WWW www = new WWW(enemyUser.Photo))
+        {
+            var image = new WWW(enemyUser.Photo);
+            yield return image;
+            Texture2D loadedTexture = new Texture2D(image.texture.width, image.texture.height);
+            image.LoadImageIntoTexture(loadedTexture);
+            _image.SetImage(loadedTexture);
+        }
+    }
 }
