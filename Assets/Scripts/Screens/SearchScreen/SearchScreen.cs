@@ -13,7 +13,6 @@ public class SearchScreen : MonoBehaviour
     private void OnEnable()
     {
         _buttonSearch.onClick.AddListener(StartEnemySearch);
-        _BattleEntryButton.onClick.AddListener(EnterButtle);
     }
 
     public void StartEnemySearch() => StartCoroutine(Search());
@@ -34,15 +33,10 @@ public class SearchScreen : MonoBehaviour
         _searchEnemy.gameObject.SetActive(false);
         _screenResult.gameObject.SetActive(true);
     }
-
-    private void EnterButtle()
-    {
-        _battleScreen.EnterBattleScreen();
-    }
+    
 
     private void OnDisable()
     {
         _buttonSearch.onClick.RemoveListener(StartEnemySearch);
-        _BattleEntryButton.onClick.RemoveListener(EnterButtle);
     }
 }

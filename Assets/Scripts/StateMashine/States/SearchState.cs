@@ -1,12 +1,13 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace StateMashine.States
 {
     public class SearchState : MonoBehaviour,IStateGame
     {
-        [SerializeField] private GameStateMahine _stateMahine;
+        [SerializeField] private GameStateMachine stateMachine;
         [SerializeField] private SearchScreen _searchScreen;
         [SerializeField] private Button _buttonEnterBattle;
 
@@ -25,7 +26,7 @@ namespace StateMashine.States
 
         private void EnterButtle()
         {
-            _stateMahine.EnterState<BattleState>();
+            stateMachine.EnterState<BattleState>();
         }
 
         private void OnDisable() => _buttonEnterBattle.onClick.RemoveListener(EnterButtle);

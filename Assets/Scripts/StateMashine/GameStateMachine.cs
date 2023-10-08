@@ -2,7 +2,7 @@ using StateMashine;
 using StateMashine.States;
 using UnityEngine;
 
-public class GameStateMahine : MonoBehaviour
+public class GameStateMachine : MonoBehaviour
 {
     private IStateGame _state;
 

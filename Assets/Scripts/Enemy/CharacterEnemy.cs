@@ -1,4 +1,5 @@
 using System;
+using StateMashine.States;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -16,8 +17,8 @@ public class CharacterEnemy : MonoBehaviour,IPointerDownHandler
    
    public event Action<int> ITookDamage;
    public event Action IDead;
-   
-   public void SetEnemyUser(EnemyUser EnemyUser)
+
+   public void SetEnemyUserData(EnemyUser EnemyUser)
    {
       if (EnemyUser == null)
          return;
@@ -28,22 +29,24 @@ public class CharacterEnemy : MonoBehaviour,IPointerDownHandler
       
       _health = Random.Range(50, 101);
    }
+   
    public void OnPointerDown(PointerEventData eventData)
    {
      var damage = Random.Range(5, 11);
       TakeDamage(damage);
+      
+      if (_health <= 0)
+         IDead?.Invoke();  
+      
    }
 
    private void TakeDamage(int damage)
    {
       if (damage <= 0)
          return;
-      
+
       _health -= damage;
       ITookDamage?.Invoke(damage);
-
-      if (_health <= 0)
-         IDead?.Invoke();
    }
 
 }

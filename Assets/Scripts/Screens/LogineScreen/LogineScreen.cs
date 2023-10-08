@@ -10,6 +10,7 @@ public class LogineScreen : MonoBehaviour
     [SerializeField] private User user;
 
     public event Action UserLogine;
+    public Button ButtonEnter => _buttonLogine;
     
     private const int _standardValue = 1;
 

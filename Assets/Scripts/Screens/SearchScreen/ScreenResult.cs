@@ -30,7 +30,7 @@ public class ScreenResult : MonoBehaviour
          _userName.text = _user.Name;
          _coins.text = $"{_user.Coin}";
          _enemyName.text = _enemyUser.Name;
-         _enemy.SetEnemyUser(_enemyUser);
+         _enemy.SetEnemyUserData(_enemyUser);
          gameObject.SetActive(true);
          StartCoroutine(GetImage(EnemyUser));
      }

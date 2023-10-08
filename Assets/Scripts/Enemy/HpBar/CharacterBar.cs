@@ -8,20 +8,15 @@ public class CharacterBar : MonoBehaviour
     
     private Image _bar;
 
-    private int _maxHeal;
+    private float _defaultValue = 1f;
 
     private void OnEnable()
     {
         _enemy.ITookDamage += CharacterTakeDamage;
+        _bar.fillAmount = _defaultValue;
     }
 
     private void Awake()=> _bar = GetComponent<Image>();
-
-    public void SetCharacterHeal(int HealCharacter)
-    {
-        if (HealCharacter > 0)
-            _maxHeal = HealCharacter;
-    }
 
     private void CharacterTakeDamage(int damage)
     {
