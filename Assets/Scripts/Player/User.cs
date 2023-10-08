@@ -24,4 +24,13 @@ public class User : MonoBehaviour
          _saveAndLoadData.SaveUser(_data);
       }
    }
+
+   public void AddCoin(int countCoin)
+   {
+      if (countCoin < 0 )
+         return;
+
+      _data.Coin += countCoin;
+   }
+   
 }

@@ -6,7 +6,7 @@ public class CharacterBar : MonoBehaviour
 {
     [SerializeField] private CharacterEnemy _enemy;
     
-    private Slider _slider;
+    private Image _bar;
 
     private int _maxHeal;
 
@@ -15,7 +15,7 @@ public class CharacterBar : MonoBehaviour
         _enemy.ITookDamage += CharacterTakeDamage;
     }
 
-    private void Awake()=> _slider = GetComponent<Slider>();
+    private void Awake()=> _bar = GetComponent<Image>();
 
     public void SetCharacterHeal(int HealCharacter)
     {
@@ -28,7 +28,7 @@ public class CharacterBar : MonoBehaviour
         if (damage <= 0)
             return;
         
-        _slider.value = (float) _enemy.Health / 100;
+        _bar.fillAmount = (float) _enemy.Health / 100;
     }
 
     private void OnDisable()=> _enemy.ITookDamage -= CharacterTakeDamage;

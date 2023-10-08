@@ -17,7 +17,7 @@ namespace StateMashine.States
 
         public void EnterState()
         {
-            if (_user.Name != null)
+            if (_user.Name != "Player")
             {
                 _stateMahine.EnterState<SearchState>();
                 return;

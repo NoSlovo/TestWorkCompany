@@ -1,8 +1,5 @@
-using System;
 using System.Collections;
-using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class SearchScreen : MonoBehaviour
@@ -12,7 +9,7 @@ public class SearchScreen : MonoBehaviour
     [SerializeField] private Button _buttonSearch;
     [SerializeField] private Button _BattleEntryButton;
     [SerializeField] private BattleScreen _battleScreen;
-    
+
     private void OnEnable()
     {
         _buttonSearch.onClick.AddListener(StartEnemySearch);
