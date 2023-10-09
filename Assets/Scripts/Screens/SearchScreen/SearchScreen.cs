@@ -10,10 +10,7 @@ public class SearchScreen : MonoBehaviour
     [SerializeField] private Button _BattleEntryButton;
     [SerializeField] private BattleScreen _battleScreen;
 
-    private void OnEnable()
-    {
-        _buttonSearch.onClick.AddListener(StartEnemySearch);
-    }
+    private void OnEnable() => _buttonSearch.onClick.AddListener(StartEnemySearch);
 
     public void StartEnemySearch() => StartCoroutine(Search());
 
@@ -35,8 +32,5 @@ public class SearchScreen : MonoBehaviour
     }
     
 
-    private void OnDisable()
-    {
-        _buttonSearch.onClick.RemoveListener(StartEnemySearch);
-    }
+    private void OnDisable()=> _buttonSearch.onClick.RemoveListener(StartEnemySearch);
 }

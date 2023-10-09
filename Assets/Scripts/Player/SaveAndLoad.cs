@@ -1,19 +1,18 @@
 ﻿using System.IO;
 using UnityEngine;
 
-public class SaveAndLoadData
+public class SaveAndLoad
 {
-
-    private string _defaultName = "Player";
-    private int _defaultCount = 0;
+    private const string _defaultName = "Player";
+    private const int _defaultCount = 0;
     
-    public void SaveUser(DataUser dataUser)
+    public void SaveData(DataUser dataUser)
     {
         string json = JsonUtility.ToJson(dataUser);
         File.WriteAllText(Application.dataPath + "/UserDataFile.json",json);
     }
 
-    public DataUser LoadUser()
+    public DataUser LoadData()
     {
         if (File.Exists(Application.dataPath + "/UserDataFile.json"))
         {

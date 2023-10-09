@@ -1,5 +1,4 @@
-﻿using System;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using Random = System.Random;
 
@@ -25,11 +24,5 @@ namespace Screens.VictoryScreen
             var valueReaward =  random.Next(100, 1001);
             return valueReaward;
         }
-
-        private void SetNameEnemy()
-        {
-            _nameEnemy.text += $"{" " + _enemy.Name}";
-        }
-
     }
 }
