@@ -10,9 +10,9 @@ namespace StateMashine.States
 
         private void OnEnable()=> _enemy.IDead += EnterVictoryState;
 
-        public void EnterState() => _battleScreen.gameObject.SetActive(true);
+        public void EnterState() => _battleScreen.Active(true);
 
-        public void ExitState() => _battleScreen.gameObject.SetActive(false);
+        public void ExitState() => _battleScreen.Active(false);
 
         private void EnterVictoryState() => stateMachine.EnterState<VictoryState>();
 
