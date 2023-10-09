@@ -9,6 +9,9 @@ public class SearchScreen : MonoBehaviour
     [SerializeField] private Button _buttonSearch;
     [SerializeField] private Button _BattleEntryButton;
     [SerializeField] private BattleScreen _battleScreen;
+    [SerializeField] private Button _enterBattleButton;
+
+    public Button EnterBattleButton => _enterBattleButton;
 
     private void OnEnable() => _buttonSearch.onClick.AddListener(StartEnemySearch);
 

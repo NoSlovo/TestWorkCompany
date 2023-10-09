@@ -2,11 +2,18 @@
 
 namespace StateMashine.States
 {
-    public class LogineState : MonoBehaviour,IStateGame
+    public class LogineState : IStateGame
     {
-        [SerializeField] private GameStateMachine stateMachine;
-        [SerializeField] private LogineScreen _logineScreen;
-        [SerializeField] private User _user;
+         private GameStateMachine _stateMachine;
+         private LogineScreen _logineScreen;
+         private User _user;
+
+         public LogineState(GameStateMachine stateMachine, LogineScreen logineScreen,User user)
+         {
+             _stateMachine = stateMachine;
+             _logineScreen = logineScreen;
+             _user = user;
+         }
 
         private const string _defaultNameUser = "Player";
 
@@ -16,7 +23,7 @@ namespace StateMashine.States
         {
             if (_user.Name != _defaultNameUser)
             {
-                stateMachine.EnterState<SearchState>();
+                _stateMachine.EnterState<SearchState>();
                 return;
             }
             _logineScreen.Active(true);
