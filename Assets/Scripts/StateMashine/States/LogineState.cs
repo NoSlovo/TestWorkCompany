@@ -19,10 +19,10 @@ namespace StateMashine.States
                 stateMachine.EnterState<SearchState>();
                 return;
             }
-            _logineScreen.gameObject.SetActive(true);
+            _logineScreen.Active(true);
         }
 
-        public void ExitState() => _logineScreen.gameObject.SetActive(false);
+        public void ExitState() => _logineScreen.Active(false);
         
         private void OnDisable() => _logineScreen.ButtonEnter.onClick.RemoveListener(EnterState);
         

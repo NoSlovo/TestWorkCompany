@@ -28,6 +28,8 @@ public class LogineScreen : MonoBehaviour
 
         _buttonLogine.gameObject.SetActive(false);
     }
+    
+    public void Active(bool activeSearch) => gameObject.SetActive(activeSearch);
 
     private void SetTextValue()
     {

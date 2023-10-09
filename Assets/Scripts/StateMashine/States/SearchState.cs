@@ -13,11 +13,11 @@ namespace StateMashine.States
 
         public void EnterState()
         {
-            _searchScreen.gameObject.SetActive(true);
+            _searchScreen.Active(true);
             _searchScreen.StartEnemySearch();
         }
 
-        public void ExitState() => _searchScreen.gameObject.SetActive(true);
+        public void ExitState() => _searchScreen.Active(true);
 
         private void EnterButtle() => stateMachine.EnterState<BattleState>();
 

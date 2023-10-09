@@ -17,6 +17,8 @@ namespace Screens.VictoryScreen
             _rewardCount.text = $"{coin}";
             _user.AddCoin(coin);
         }
+        
+        public void Active(bool activeSearch) => gameObject.SetActive(activeSearch);
 
         private int CoinGenerationReward()
         {

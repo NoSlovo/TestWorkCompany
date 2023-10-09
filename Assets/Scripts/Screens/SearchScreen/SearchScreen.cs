@@ -17,9 +17,11 @@ public class SearchScreen : MonoBehaviour
     private IEnumerator Search()
     {
         var WaitForSecondsRealtime = new WaitForSecondsRealtime(1f);
-        _searchEnemy.gameObject.SetActive(true);
-        _screenResult.gameObject.SetActive(false);
-        _searchEnemy.GetEnemy();
+        
+        _searchEnemy.Active(true);
+        _screenResult.Active(false);
+        _searchEnemy.BuildEnemy();
+        
         yield return WaitForSecondsRealtime;
         EnterScreenResult();
     }
@@ -27,10 +29,11 @@ public class SearchScreen : MonoBehaviour
     private void EnterScreenResult()
     {
         _screenResult.SetEnemyUser(_searchEnemy.ResultEnemy);
-        _searchEnemy.gameObject.SetActive(false);
-        _screenResult.gameObject.SetActive(true);
+        _searchEnemy.Active(false);
+        _screenResult.Active(true);
     }
     
+    public void Active(bool activeSearch) => gameObject.SetActive(activeSearch);
 
     private void OnDisable()=> _buttonSearch.onClick.RemoveListener(StartEnemySearch);
 }

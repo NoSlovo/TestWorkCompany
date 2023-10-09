@@ -46,4 +46,6 @@ public class ScreenResult : MonoBehaviour
             _image.SetImage(loadedTexture);
         }
     }
+    
+    public void Active(bool activeSearch) => gameObject.SetActive(activeSearch);
 }
