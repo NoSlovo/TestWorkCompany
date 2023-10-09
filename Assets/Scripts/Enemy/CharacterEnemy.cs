@@ -1,5 +1,4 @@
 using System;
-using StateMashine.States;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -10,7 +9,13 @@ public class CharacterEnemy : MonoBehaviour,IPointerDownHandler
    [SerializeField] private TextMeshProUGUI _enemyName;
 
    private int _health;
-   private string _enemyUserName; 
+   private string _enemyUserName;
+
+   private const int _minHealth = 50;
+   private const int _maxHealth = 101;
+   private const int _damageMinTakeValue = 5;
+   private const int _damageMaxTakeValue = 11;
+   
 
    public int Health => _health;
    public string Name => _enemyUserName;
@@ -27,12 +32,12 @@ public class CharacterEnemy : MonoBehaviour,IPointerDownHandler
       
       _enemyName.text = _enemyUserName;
       
-      _health = Random.Range(50, 101);
+      _health = Random.Range(_minHealth, _maxHealth);
    }
    
    public void OnPointerDown(PointerEventData eventData)
    {
-     var damage = Random.Range(5, 11);
+     var damage = Random.Range(_damageMinTakeValue, _damageMaxTakeValue);
       TakeDamage(damage);
       
       if (_health <= 0)

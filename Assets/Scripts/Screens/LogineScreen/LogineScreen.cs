@@ -7,7 +7,7 @@ public class LogineScreen : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _userText;
     [SerializeField] private Button _buttonLogine;
-    [SerializeField] private User user;
+    [SerializeField] private User _user;
 
     public event Action UserLogine;
     public Button ButtonEnter => _buttonLogine;
@@ -28,10 +28,12 @@ public class LogineScreen : MonoBehaviour
 
         _buttonLogine.gameObject.SetActive(false);
     }
+    
+    public void Active(bool activeSearch) => gameObject.SetActive(activeSearch);
 
     private void SetTextValue()
     {
-        user.SetName(_userText.text);
+        _user.SetName(_userText.text);
         UserLogine?.Invoke();
     } 
         

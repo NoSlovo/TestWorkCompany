@@ -18,7 +18,7 @@ namespace StateMashine.States
              _victoryScreen.SetRewardUser();
         }
 
-        public void ExitState() => _victoryScreen.gameObject.SetActive(false);
+        public void ExitState() => _victoryScreen.Active(false);
         
         private void EnterSearchState()=> _gameStateMachine.EnterState<SearchState>();
 

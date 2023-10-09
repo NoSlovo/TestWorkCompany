@@ -1,6 +1,4 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.Serialization;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 namespace StateMashine.States
@@ -15,21 +13,14 @@ namespace StateMashine.States
 
         public void EnterState()
         {
-            _searchScreen.gameObject.SetActive(true);
+            _searchScreen.Active(true);
             _searchScreen.StartEnemySearch();
         }
 
-        public void ExitState()
-        {
-            _searchScreen.gameObject.SetActive(true);
-        }
+        public void ExitState() => _searchScreen.Active(true);
 
-        private void EnterButtle()
-        {
-            stateMachine.EnterState<BattleState>();
-        }
+        private void EnterButtle() => stateMachine.EnterState<BattleState>();
 
         private void OnDisable() => _buttonEnterBattle.onClick.RemoveListener(EnterButtle);
-        
     }
 }

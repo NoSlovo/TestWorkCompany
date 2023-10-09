@@ -1,5 +1,4 @@
-﻿using System;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using Random = System.Random;
 
@@ -18,6 +17,8 @@ namespace Screens.VictoryScreen
             _rewardCount.text = $"{coin}";
             _user.AddCoin(coin);
         }
+        
+        public void Active(bool activeSearch) => gameObject.SetActive(activeSearch);
 
         private int CoinGenerationReward()
         {
@@ -25,11 +26,5 @@ namespace Screens.VictoryScreen
             var valueReaward =  random.Next(100, 1001);
             return valueReaward;
         }
-
-        private void SetNameEnemy()
-        {
-            _nameEnemy.text += $"{" " + _enemy.Name}";
-        }
-
     }
 }

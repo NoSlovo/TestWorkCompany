@@ -20,19 +20,19 @@ public class ScreenResult : MonoBehaviour
 
     public EnemyUser EnemyUser => _enemyUser;
 
-    public void SetEnemyUser(EnemyUser EnemyUser)
+    public void SetEnemyUser(EnemyUser Enemy)
      {
-         if (EnemyUser == null)
+         if (Enemy == null)
             return;
          
-         _enemyUser = EnemyUser;
+         _enemyUser = Enemy;
          
          _userName.text = _user.Name;
          _coins.text = $"{_user.Coin}";
          _enemyName.text = _enemyUser.Name;
          _enemy.SetEnemyUserData(_enemyUser);
          gameObject.SetActive(true);
-         StartCoroutine(GetImage(EnemyUser));
+         StartCoroutine(GetImage(Enemy));
      }
 
     private IEnumerator GetImage(EnemyUser enemyUser)
@@ -46,4 +46,6 @@ public class ScreenResult : MonoBehaviour
             _image.SetImage(loadedTexture);
         }
     }
+    
+    public void Active(bool activeSearch) => gameObject.SetActive(activeSearch);
 }
