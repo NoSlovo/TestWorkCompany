@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = System.Random;
 
 namespace Screens.VictoryScreen
@@ -10,6 +11,9 @@ namespace Screens.VictoryScreen
         [SerializeField] private TextMeshProUGUI _rewardCount;
         [SerializeField] private CharacterEnemy _enemy;
         [SerializeField] private User _user;
+        [SerializeField] private Button _buttonContinue;
+
+        public Button ButtonContinue => _buttonContinue;
         
         public void SetRewardUser()
         {

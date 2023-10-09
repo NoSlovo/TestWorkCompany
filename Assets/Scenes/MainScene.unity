@@ -571,10 +571,6 @@ GameObject:
   - component: {fileID: 165663102}
   - component: {fileID: 165663101}
   - component: {fileID: 165663106}
-  - component: {fileID: 165663105}
-  - component: {fileID: 165663107}
-  - component: {fileID: 165663108}
-  - component: {fileID: 165663109}
   m_Layer: 5
   m_Name: Game
   m_TagString: Untagged
@@ -669,21 +665,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &165663105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 165663100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4373ca33466f414fa0212f839f48c008, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stateMachine: {fileID: 165663106}
-  _logineScreen: {fileID: 1158853567}
-  _user: {fileID: 2020380131}
 --- !u!114 &165663106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -696,51 +677,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68f0e3380179eea45af468ef08b346a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &165663107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 165663100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 166f47cf9c324e16a820885ed16e83c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stateMachine: {fileID: 165663106}
+  _logineScreen: {fileID: 1158853567}
   _searchScreen: {fileID: 842121398}
-  _buttonEnterBattle: {fileID: 1731860646}
---- !u!114 &165663108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 165663100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96d252d427c2450a87c09247a844d4d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stateMachine: {fileID: 165663106}
   _battleScreen: {fileID: 581807963}
-  _enemy: {fileID: 1438258608}
---- !u!114 &165663109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 165663100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5ea9ed1e1b3403393348f1c2ed6b18d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gameStateMachine: {fileID: 165663106}
   _victoryScreen: {fileID: 1646926747}
-  _buttonContinue: {fileID: 2091637997}
+  _user: {fileID: 2020380131}
 --- !u!1 &178534525
 GameObject:
   m_ObjectHideFlags: 0
@@ -1367,6 +1308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d70fa210799f4c4419830c77c52f18d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemy: {fileID: 1438258608}
 --- !u!1 &602059790
 GameObject:
   m_ObjectHideFlags: 0
@@ -1670,6 +1612,7 @@ MonoBehaviour:
   _buttonSearch: {fileID: 1673091799}
   _BattleEntryButton: {fileID: 1731860646}
   _battleScreen: {fileID: 581807963}
+  _enterBattleButton: {fileID: 1731860646}
 --- !u!1 &854788487
 GameObject:
   m_ObjectHideFlags: 0
@@ -3511,6 +3454,7 @@ MonoBehaviour:
   _rewardCount: {fileID: 1907880999}
   _enemy: {fileID: 1438258608}
   _user: {fileID: 2020380131}
+  _buttonContinue: {fileID: 2091637997}
 --- !u!1 &1673091797
 GameObject:
   m_ObjectHideFlags: 0

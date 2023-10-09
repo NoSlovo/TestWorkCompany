@@ -2,20 +2,30 @@
 
 namespace StateMashine.States
 {
-    public class BattleState : MonoBehaviour,IStateGame
+    public class BattleState : IStateGame
     {
-        [SerializeField] private GameStateMachine stateMachine;
-        [SerializeField] private BattleScreen _battleScreen;
-        [SerializeField] private CharacterEnemy _enemy;
+         private GameStateMachine _stateMachine;
+         private BattleScreen _battleScreen;
 
-        private void OnEnable()=> _enemy.IDead += EnterVictoryState;
+         public BattleState(GameStateMachine StateMachine,BattleScreen battleScreen)
+         {
+             _stateMachine = StateMachine;
+             _battleScreen = battleScreen;
 
-        public void EnterState() => _battleScreen.Active(true);
+         }
 
-        public void ExitState() => _battleScreen.Active(false);
+         public void EnterState()
+         {
+             _battleScreen.CharacterEnemy.IDead += EnterVictoryState;
+             _battleScreen.Active(true);
+         }
 
-        private void EnterVictoryState() => stateMachine.EnterState<VictoryState>();
+         public void ExitState()
+         {
+             _battleScreen.Active(false);
+             _battleScreen.CharacterEnemy.IDead -= EnterVictoryState;
+         }
 
-        private void OnDisable() => _enemy.IDead += EnterVictoryState;
+         private void EnterVictoryState() => _stateMachine.EnterState<VictoryState>();
     }
 }

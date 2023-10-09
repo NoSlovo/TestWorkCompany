@@ -1,26 +1,29 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-
-namespace StateMashine.States
+﻿namespace StateMashine.States
 {
-    public class SearchState : MonoBehaviour,IStateGame
+    public class SearchState : IStateGame
     {
-        [SerializeField] private GameStateMachine stateMachine;
-        [SerializeField] private SearchScreen _searchScreen;
-        [SerializeField] private Button _buttonEnterBattle;
+        private GameStateMachine _stateMachine;
+        private SearchScreen _searchScreen;
 
-        private void OnEnable() => _buttonEnterBattle.onClick.AddListener(EnterButtle);
-
+        public SearchState(GameStateMachine StateMachine,SearchScreen SearchScreen)
+        {
+            _stateMachine = StateMachine;
+            _searchScreen = SearchScreen;
+        }
+        
         public void EnterState()
         {
+            _searchScreen.EnterBattleButton.onClick.AddListener(EnterButtle);
             _searchScreen.Active(true);
             _searchScreen.StartEnemySearch();
         }
 
-        public void ExitState() => _searchScreen.Active(true);
+        public void ExitState()
+        {
+            _searchScreen.Active(true);
+            _searchScreen.EnterBattleButton.onClick.RemoveListener(EnterButtle);
+        }
 
-        private void EnterButtle() => stateMachine.EnterState<BattleState>();
-
-        private void OnDisable() => _buttonEnterBattle.onClick.RemoveListener(EnterButtle);
+        private void EnterButtle() => _stateMachine.EnterState<BattleState>();
     }
 }
