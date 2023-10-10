@@ -1,6 +1,7 @@
-using System.Collections;
+using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class ScreenResult : MonoBehaviour
 {
@@ -32,17 +33,17 @@ public class ScreenResult : MonoBehaviour
          _enemyName.text = _enemyUser.Name;
          _enemy.SetEnemyUserData(_enemyUser);
          gameObject.SetActive(true);
-         StartCoroutine(GetImage(Enemy));
+         GetImage(Enemy.Photo);
      }
 
-    private IEnumerator GetImage(EnemyUser enemyUser)
+    private async void GetImage(string enemyURLPhoto)
     {
-        using (WWW www = new WWW(enemyUser.Photo))
+        using (var www = UnityWebRequestTexture.GetTexture(enemyURLPhoto))
         {
-            var image = new WWW(enemyUser.Photo);
-            yield return image;
-            Texture2D loadedTexture = new Texture2D(image.texture.width, image.texture.height);
-            image.LoadImageIntoTexture(loadedTexture);
+            await www.SendWebRequest();
+            
+            var image = DownloadHandlerTexture.GetContent(www);
+            Texture2D loadedTexture = image;
             _image.SetImage(loadedTexture);
         }
     }

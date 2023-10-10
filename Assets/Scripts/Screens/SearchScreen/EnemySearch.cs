@@ -1,32 +1,36 @@
 using System.Net.Http;
 using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using Enemy;
 using Newtonsoft.Json.Linq;
 using UnityEngine;
+using UnityEngine.Networking;
+
 public class EnemySearch : MonoBehaviour
 {
    private EnemyUser _resultEnemy;
    private const string _urlEnemy = "https://randomuser.me/api/ ";
-   public EnemyUser ResultEnemy => _resultEnemy;
 
-   public void BuildEnemy()
+   public async Task<EnemyUser> GetEnemy()
    {
-      _resultEnemy = null;
-      using (var http = new HttpClient())
-      {
-         Task<string> result =  http.GetStringAsync(_urlEnemy);
 
-         var getResult = JObject.Parse(result.Result)["results"][0];
+
+      using (UnityWebRequest www = UnityWebRequest.Get(_urlEnemy))
+      {
+         await www.SendWebRequest();
+         string result = www.downloadHandler.text;
+         
+         var getResult = JObject.Parse(result)["results"][0];
          var nameEnemy =getResult["id"]["name"];
          var urlPhotoEnemy = getResult["picture"]["medium"];
-      
+         
          var enemyData = new EnemyData();
          enemyData.EnemyPhoto = urlPhotoEnemy.Value<string>();
          enemyData.EnemyName = nameEnemy.Value<string>();
-         _resultEnemy = new EnemyUser(enemyData);
+         return new EnemyUser(enemyData);
       }
    }
-   
+
    public void Active(bool activeSearch) => gameObject.SetActive(activeSearch);
 
 }

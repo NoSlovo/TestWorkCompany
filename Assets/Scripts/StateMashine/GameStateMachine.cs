@@ -7,24 +7,22 @@ using UnityEngine;
 
 public class GameStateMachine : MonoBehaviour
 {
-    [SerializeField] private LogineScreen _logineScreen;
-    [SerializeField] private SearchScreen _searchScreen;
-    [SerializeField] private BattleScreen _battleScreen;
-    [SerializeField] private VictoryScreen _victoryScreen;
     [SerializeField] private User _user;
-
+    [SerializeField] private ScreenServise _screenServise;
+    
     private Dictionary<Type, IStateGame> _gameState;
 
     private IStateGame _state;
 
     private void Awake()
     {
-        _gameState =  new Dictionary<Type, IStateGame>()
+
+        _gameState = new Dictionary<Type, IStateGame>()
         {
-            [typeof(LogineState)] = new LogineState(this,_logineScreen,_user),
-            [typeof(SearchState)] = new SearchState(this,_searchScreen),
-            [typeof(BattleState)] = new BattleState(this,_battleScreen),
-            [typeof(VictoryState)] = new VictoryState(this,_victoryScreen)
+            [typeof(LogineState)] = new LogineState(this,_screenServise.ServiceLocator.Get<LogineScreen>(),_user),
+            [typeof(SearchState)] = new SearchState(this,_screenServise.ServiceLocator.Get<SearchScreen>()),
+            [typeof(BattleState)] = new BattleState(this,_screenServise.ServiceLocator.Get<BattleScreen>()),
+            [typeof(VictoryState)] = new VictoryState(this,_screenServise.ServiceLocator.Get<VictoryScreen>())
         };
     }
 

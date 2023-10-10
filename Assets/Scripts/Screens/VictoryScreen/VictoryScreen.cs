@@ -1,11 +1,12 @@
-﻿using TMPro;
+﻿using DefaultNamespace;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = System.Random;
 
 namespace Screens.VictoryScreen
 {
-    public class VictoryScreen : MonoBehaviour
+    public class VictoryScreen : MonoBehaviour,IScreen
     {
         [SerializeField] private TextMeshProUGUI _nameEnemy;
         [SerializeField] private TextMeshProUGUI _rewardCount;

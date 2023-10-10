@@ -1,6 +1,7 @@
+using DefaultNamespace;
 using UnityEngine;
 
-public class BattleScreen : MonoBehaviour
+public class BattleScreen : MonoBehaviour,IScreen
 {
     [SerializeField] private CharacterEnemy _enemy;
 

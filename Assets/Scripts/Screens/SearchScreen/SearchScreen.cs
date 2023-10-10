@@ -1,8 +1,9 @@
 using System.Collections;
+using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SearchScreen : MonoBehaviour
+public class SearchScreen : MonoBehaviour,IScreen
 {
     [SerializeField] private EnemySearch _searchEnemy;
     [SerializeField] private ScreenResult _screenResult;
@@ -15,23 +16,22 @@ public class SearchScreen : MonoBehaviour
 
     private void OnEnable() => _buttonSearch.onClick.AddListener(StartEnemySearch);
 
-    public void StartEnemySearch() => StartCoroutine(Search());
+    public void StartEnemySearch() => Search();
 
-    private IEnumerator Search()
+    private async void Search()
     {
-        var WaitForSecondsRealtime = new WaitForSecondsRealtime(1f);
-        
         _searchEnemy.Active(true);
         _screenResult.Active(false);
-        _searchEnemy.BuildEnemy();
         
-        yield return WaitForSecondsRealtime;
-        EnterScreenResult();
+        var enemy = _searchEnemy.GetEnemy();
+        var result = await enemy;
+        
+        EnterScreenResult(result);
     }
 
-    private void EnterScreenResult()
+    private void EnterScreenResult(EnemyUser user)
     {
-        _screenResult.SetEnemyUser(_searchEnemy.ResultEnemy);
+        _screenResult.SetEnemyUser(user);
         _searchEnemy.Active(false);
         _screenResult.Active(true);
     }

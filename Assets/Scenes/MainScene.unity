@@ -571,6 +571,7 @@ GameObject:
   - component: {fileID: 165663102}
   - component: {fileID: 165663101}
   - component: {fileID: 165663106}
+  - component: {fileID: 165663107}
   m_Layer: 5
   m_Name: Game
   m_TagString: Untagged
@@ -677,11 +678,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68f0e3380179eea45af468ef08b346a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _user: {fileID: 2020380131}
+  _screenServise: {fileID: 165663107}
+--- !u!114 &165663107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165663100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 378f37e21abf0c049afabe9c6116f37d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _logineScreen: {fileID: 1158853567}
   _searchScreen: {fileID: 842121398}
   _battleScreen: {fileID: 581807963}
   _victoryScreen: {fileID: 1646926747}
-  _user: {fileID: 2020380131}
 --- !u!1 &178534525
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,9 +1,10 @@
 using System;
+using DefaultNamespace;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LogineScreen : MonoBehaviour
+public class LogineScreen : MonoBehaviour,IScreen
 {
     [SerializeField] private TextMeshProUGUI _userText;
     [SerializeField] private Button _buttonLogine;
